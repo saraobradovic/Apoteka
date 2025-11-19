@@ -1,0 +1,106 @@
+﻿<Window x:Class="ApotekaApp.RacuniWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Pregled Računa" 
+        Height="500" 
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}">
+
+    <Window.Resources>
+        <!-- Stil za DataGrid -->
+        <Style x:Key="ThemeDataGrid" TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F8F9FA"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#E1E8ED"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#E1E8ED"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="CanUserResizeColumns" Value="True"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="CanUserSortColumns" Value="True"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+        </Style>
+
+        <!-- Stil za DataGrid header -->
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Stil za DataGrid cell -->
+        <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Background="{DynamicResource PrimaryBrush}" 
+                Padding="20,12"
+                CornerRadius="6"
+                Margin="0,0,0,15">
+            <TextBlock Text="🧾 Pregled Računa" 
+                       Foreground="White" 
+                       FontSize="16" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- DataGrid za račune -->
+        <Border Grid.Row="1" 
+                Background="White" 
+                BorderBrush="{DynamicResource PrimaryBrush}"
+                BorderThickness="1"
+                CornerRadius="6">
+            <DataGrid x:Name="dataGridRacuni"
+                      Style="{StaticResource ThemeDataGrid}"
+                      ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}"
+                      CellStyle="{StaticResource DataGridCellStyle}"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Računa" 
+                                      Binding="{Binding RacunID}" 
+                                      Width="100"/>
+                    <DataGridTextColumn Header="ID Narudžbe" 
+                                      Binding="{Binding NarudzbaID}" 
+                                      Width="100"/>
+                    <DataGridTextColumn Header="Datum" 
+                                      Binding="{Binding Datum, StringFormat=dd.MM.yyyy HH:mm}" 
+                                      Width="150"/>
+                    <DataGridTextColumn Header="Ukupan Iznos (KM)" 
+                                      Binding="{Binding UkupanIznos, StringFormat=F2}" 
+                                      Width="120"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+    </Grid>
+</Window>

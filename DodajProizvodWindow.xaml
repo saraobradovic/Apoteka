@@ -1,0 +1,150 @@
+﻿<Window x:Class="ApotekaApp.DodajProizvodWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dodaj Proizvod" 
+        Height="470" 
+        Width="450" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}">
+
+    <Window.Resources>
+        <!-- Stil za textbox -->
+        <Style x:Key="FormTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="CaretBrush" Value="Black"/>
+        </Style>
+
+        <!-- Stil za combobox -->
+        <Style x:Key="FormComboBox" TargetType="ComboBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <!-- Stil za dugmad -->
+        <Style x:Key="FormButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Stil za label -->
+        <Style x:Key="FormLabel" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Background="{DynamicResource PrimaryBrush}" 
+                Padding="15,10"
+                CornerRadius="6"
+                Margin="0,0,0,15">
+            <TextBlock Text="➕ Dodaj Proizvod" 
+                       Foreground="White" 
+                       FontSize="14" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Šifra -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,8">
+            <TextBlock Text="Šifra:" Width="100" Style="{StaticResource FormLabel}"/>
+            <TextBox x:Name="txtSifra" Width="200" Style="{StaticResource FormTextBox}"/>
+        </StackPanel>
+
+        <!-- Naziv -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,8">
+            <TextBlock Text="Naziv:" Width="100" Style="{StaticResource FormLabel}"/>
+            <TextBox x:Name="txtNaziv" Width="200" Style="{StaticResource FormTextBox}"/>
+        </StackPanel>
+
+        <!-- Cijena -->
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0,8">
+            <TextBlock Text="Cijena:" Width="100" Style="{StaticResource FormLabel}"/>
+            <TextBox x:Name="txtCijena" Width="200" Style="{StaticResource FormTextBox}"/>
+        </StackPanel>
+
+        <!-- Količina -->
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,8">
+            <TextBlock Text="Količina:" Width="100" Style="{StaticResource FormLabel}"/>
+            <TextBox x:Name="txtKolicina" Width="200" Style="{StaticResource FormTextBox}"/>
+        </StackPanel>
+
+        <!-- Kategorija -->
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,8">
+            <TextBlock Text="Kategorija:" Width="100" Style="{StaticResource FormLabel}"/>
+            <ComboBox x:Name="comboKategorija" Width="160" Style="{StaticResource FormComboBox}"/>
+            <Button Content="+" 
+                    Width="25" 
+                    Height="25" 
+                    Margin="5,0,0,0" 
+                    Click="BtnDodajKategoriju_Click"
+                    Style="{StaticResource FormButton}"
+                    Background="{DynamicResource AccentBrush}"/>
+        </StackPanel>
+
+        <!-- Dobavljač -->
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Margin="0,8">
+            <TextBlock Text="Dobavljač:" Width="100" Style="{StaticResource FormLabel}"/>
+            <ComboBox x:Name="comboDobavljac" Width="160" Style="{StaticResource FormComboBox}"/>
+            <Button Content="+" 
+                    Width="25" 
+                    Height="25" 
+                    Margin="5,0,0,0" 
+                    Click="BtnDodajDobavljaca_Click"
+                    Style="{StaticResource FormButton}"
+                    Background="{DynamicResource AccentBrush}"/>
+        </StackPanel>
+
+        <!-- Sačuvaj -->
+        <Button Content="💾 Sačuvaj" 
+                Grid.Row="7" 
+                Width="120" 
+                Height="35" 
+                HorizontalAlignment="Center" 
+                Margin="0,20,0,0" 
+                Click="BtnSacuvaj_Click"
+                Style="{StaticResource FormButton}"
+                Background="{DynamicResource SecondaryBrush}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,185 @@
+﻿<Window x:Class="ApotekaApp.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Administrator Panel" 
+        Height="500" 
+        Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}">
+
+    <Window.Resources>
+        <!-- Stil za dugmad sa hover efektom -->
+        <Style x:Key="AdminButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- Hover efekti -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.9"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="2"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Opacity" Value="0.8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Stil za textbox -->
+        <Style x:Key="SearchTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#2C3E50"/>
+            <Setter Property="CaretBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                        Margin="{TemplateBinding Padding}"
+                                        Background="Transparent"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Stil za DataGrid -->
+        <Style x:Key="ThemeDataGrid" TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F8F9FA"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#E1E8ED"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#E1E8ED"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="AutoGenerateColumns" Value="True"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="CanUserResizeColumns" Value="True"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="CanUserSortColumns" Value="True"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Background="{DynamicResource PrimaryBrush}" 
+                Padding="20,12"
+                CornerRadius="6"
+                Margin="0,0,0,15">
+         
+        </Border>
+
+        <!-- Gornja traka sa dugmadima -->
+        <StackPanel Grid.Row="0" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,10">
+            <Button Content="➕ Dodaj proizvod" 
+                    Width="130" 
+                    Height="35"
+                    Margin="5" 
+                    Click="BtnDodaj_Click"
+                    Style="{StaticResource AdminButton}"
+                    Background="{DynamicResource SecondaryBrush}"/>
+            <Button Content="✏️ Uredi proizvod" 
+                    Width="130" 
+                    Height="35"
+                    Margin="5" 
+                    Click="BtnUredi_Click"
+                    Style="{StaticResource AdminButton}"
+                    Background="{DynamicResource AccentBrush}"/>
+            <Button Content="📋 Pregled narudžbi" 
+                    Width="130" 
+                    Height="35"
+                    Margin="5" 
+                    Click="BtnPregledNarudzbi_Click"
+                    Style="{StaticResource AdminButton}"
+                    Background="{DynamicResource SecondaryBrush}"/>
+            <Button Content="🧾 Pregled računa" 
+                    Width="130" 
+                    Height="35"
+                    Margin="5" 
+                    Click="BtnRacuni_Click"
+                    Style="{StaticResource AdminButton}"
+                    Background="{DynamicResource AccentBrush}"/>
+        </StackPanel>
+
+        <!-- Pretraga proizvoda -->
+        <Border Grid.Row="1" 
+                Background="White" 
+                Padding="15,10"
+                BorderBrush="{DynamicResource PrimaryBrush}"
+                BorderThickness="1"
+                CornerRadius="6"
+                Margin="0,0,0,15">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="🔍"
+                           Foreground="{DynamicResource PrimaryBrush}"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,0"
+                           FontSize="14"/>
+                <TextBox x:Name="txtPretraga" 
+                         Width="250"
+                         Height="30"
+                         Background="White"
+                         BorderBrush="{DynamicResource PrimaryBrush}"
+                         BorderThickness="1"
+                         Padding="8,6"
+                         FontSize="12"
+                         Foreground="Black"
+                         CaretBrush="Black"
+                         TextChanged="txtPretraga_TextChanged"/>
+            </StackPanel>
+        </Border>
+
+        <!-- DataGrid proizvodi -->
+        <Border Grid.Row="2" 
+                Background="White" 
+                BorderBrush="{DynamicResource PrimaryBrush}"
+                BorderThickness="1"
+                CornerRadius="6">
+            <DataGrid x:Name="dataGridProizvodi" 
+                      Style="{StaticResource ThemeDataGrid}"/>
+        </Border>
+    </Grid>
+</Window>

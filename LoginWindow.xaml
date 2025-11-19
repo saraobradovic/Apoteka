@@ -1,0 +1,116 @@
+﻿<Window x:Class="ApotekaApp.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Prijava Administratora" 
+        Height="400" 
+        Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{DynamicResource BackgroundBrush}">
+
+    <Window.Resources>
+        <!-- Stil za dugmad -->
+        <Style x:Key="LoginButton" TargetType="Button">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Stil za textbox -->
+        <Style x:Key="LoginTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="CaretBrush" Value="Black"/>
+        </Style>
+
+        <!-- Stil za passwordbox -->
+        <Style x:Key="LoginPasswordBox" TargetType="PasswordBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="PasswordChar" Value="•"/>
+        </Style>
+
+        <!-- Stil za labele -->
+        <Style x:Key="LoginLabel" TargetType="Label">
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="0,0,0,5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Naslov -->
+        <Border Grid.Row="0" 
+                Background="{DynamicResource PrimaryBrush}" 
+                Padding="15,10"
+                Margin="0,0,0,20"
+                CornerRadius="8">
+            <TextBlock Text="🔐 Prijava Administratora" 
+                       Foreground="White" 
+                       FontSize="16" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Korisničko ime -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,15">
+            <Label Content="Korisničko ime:" 
+                   Style="{StaticResource LoginLabel}"/>
+            <TextBox x:Name="txtUsername" 
+                     Style="{StaticResource LoginTextBox}"
+                     Height="35"/>
+            
+        </StackPanel>
+
+        <!-- Lozinka -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,20">
+            <Label Content="Lozinka:" 
+                   Style="{StaticResource LoginLabel}"/>
+            <PasswordBox x:Name="txtPassword" 
+                         Style="{StaticResource LoginPasswordBox}"
+                         Height="35"/>
+        </StackPanel>
+
+        <!-- Dugme za prijavu -->
+        <Button Grid.Row="3" 
+                Content="Prijavi se" 
+                Click="BtnLogin_Click" 
+                Height="40"
+                Style="{StaticResource LoginButton}"
+                Background="{DynamicResource SecondaryBrush}"/>
+
+    
+    </Grid>
+</Window>

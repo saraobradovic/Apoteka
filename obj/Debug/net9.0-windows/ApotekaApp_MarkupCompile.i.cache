@@ -1,0 +1,20 @@
+﻿ApotekaApp
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\DT User\source\repos\Apoteka\ApotekaApp\ApotekaApp\obj\Debug\net9.0-windows\
+ApotekaApp
+none
+false
+TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\DT User\source\repos\Apoteka\ApotekaApp\ApotekaApp\App.xaml
+15-285056604
+2339804742
+18343206884
+207-1759462192
+AdminWindow.xaml;DodajDobavljacaWindow.xaml;DodajKategorijuWindow.xaml;DodajProizvodWindow.xaml;KorisnikWindow.xaml;LoginWindow.xaml;MainWindow.xaml;NarudzbaWindow.xaml;PregledNarudzbiWindow.xaml;RacuniWindow.xaml;StartWindow.xaml;Themes\Tema1.xaml;Themes\Tema2.xaml;Themes\Tema3.xaml;UrediProizvodWindow.xaml;
+
+False
+

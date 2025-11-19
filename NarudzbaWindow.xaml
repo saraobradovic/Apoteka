@@ -1,0 +1,113 @@
+﻿<Window x:Class="ApotekaApp.NarudzbaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Unos podataka o kupcu"
+        Height="450" Width="450"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}">
+
+    <Window.Resources>
+        <!-- Stil za textbox -->
+        <Style x:Key="FormTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="CaretBrush" Value="Black"/>
+        </Style>
+
+        <!-- Stil za dugmad -->
+        <Style x:Key="FormButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Stil za label -->
+        <Style x:Key="FormLabel" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Background="{DynamicResource PrimaryBrush}" 
+                Padding="15,10"
+                CornerRadius="6"
+                Margin="0,0,0,20">
+            <TextBlock Text="👤 Podaci o Kupcu" 
+                       Foreground="White" 
+                       FontSize="14" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Forma za unos podataka -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Unesite vaše podatke" 
+                       FontSize="16" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,20"
+                       Foreground="{DynamicResource TextBrush}"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <TextBlock Text="Ime:" Width="100" Style="{StaticResource FormLabel}"/>
+                <TextBox x:Name="txtIme" Width="200" Style="{StaticResource FormTextBox}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <TextBlock Text="Prezime:" Width="100" Style="{StaticResource FormLabel}"/>
+                <TextBox x:Name="txtPrezime" Width="200" Style="{StaticResource FormTextBox}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <TextBlock Text="Email:" Width="100" Style="{StaticResource FormLabel}"/>
+                <TextBox x:Name="txtEmail" Width="200" Style="{StaticResource FormTextBox}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <TextBlock Text="Telefon:" Width="100" Style="{StaticResource FormLabel}"/>
+                <TextBox x:Name="txtTelefon" Width="200" Style="{StaticResource FormTextBox}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Dugme potvrdi -->
+        <Button Grid.Row="2" 
+                Content="✅ Potvrdi kupovinu" 
+                Width="180" 
+                Height="35" 
+                HorizontalAlignment="Center" 
+                Margin="0,20,0,0"
+                Click="BtnPotvrdi_Click"
+                Style="{StaticResource FormButton}"
+                Background="{DynamicResource SecondaryBrush}"/>
+    </Grid>
+</Window>
