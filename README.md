@@ -206,7 +206,16 @@ U desnom panelu klijent može:
 #### 5. Završetak kupovine
 Klikom na "Završi kupovinu" otvara se prozor za unos podataka za dostavu i plaćanje:
 
-![Narudžba prozor](apoteka/NarudzbaKorisnik.png)
+![Narudžba prozor](apoteka/NarudzbaKorisnikpng.png)
+
+Ukoliko sva polja nisu popunjena, narudzba se ne odobrava.
+
+![Narudžba prozor](apoteka/PopunjenostPolja.png)
+
+Svi podaci moraju biti popunjeni.
+
+![Narudžba prozor](apoteka/UspjesnaKupovina.png)
+
 
 ## Pretraga proizvoda
 
@@ -239,7 +248,7 @@ Svi korisnici mogu promijeniti izgled aplikacije kroz odabir teme.
 ### Promjena teme:
 
 #### Za klijente:
-Tema se bira na početnom prozoru prije ulaska u kupovinu.
+Tema se bira na početnom prozoru prije prijave admina.
 
 #### Za administratore:
 Tema se bira na početnom prozoru prije ulaska u kupovinu.
