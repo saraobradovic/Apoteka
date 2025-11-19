@@ -243,7 +243,7 @@ Svi korisnici mogu promijeniti izgled aplikacije kroz odabir teme.
 ### Dostupne teme:
 - **Plava tema** - defaultni izgled sa plavim akcentima
 - **Zelena tema** - prirodni zeleni tonovi
-- **Tamna tema** - tamni mod za ugodnije korišćenje noću
+- **Ljubičasta tema** -  mod za ugodnije koričćenje
 
 ### Promjena teme:
 
