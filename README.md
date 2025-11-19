@@ -116,7 +116,7 @@ Prilikom dodavanja proizvoda, administrator može dodati novog dobavljača:
 
 Administratori mogu pretraživati proizvode kroz opciju "Pretraga proizvoda":
 
-![Pretraga proizvoda](apoteka/pretraga.png)
+![Pretraga proizvoda](apoteka/Pretraga.png)
 
 **Mogućnosti pretrage:**
 - Pretraga po nazivu proizvoda
